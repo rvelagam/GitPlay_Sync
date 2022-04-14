@@ -1,0 +1,27 @@
+!!com.compuware.ispw.wzzms.models.IspwRoot
+ispwApplication:
+  application: PLAY
+  encryptionProtocol: None
+  host: cw09.compuware.com
+  hostCodePage: '1047'
+  pathMappings: 
+  - path: \CLST
+    types:
+    - fileExtension: clst
+      ispwType: CLST
+  - path: \COB
+    types:
+    - fileExtension: cob
+      ispwType: COB
+  - path: \COPY
+    types:
+    - fileExtension: copy
+      ispwType: COPY  
+  - path: \JOB
+    types:
+    - fileExtension: job
+      ispwType: JOB  
+  port: 47623
+  readWriteTimeout: 90
+  runtimeConfig: tpzp
+  stream: PLAY
