@@ -41,7 +41,7 @@ jobs:
             runtimeConfiguration: 'TPZP'
             stream: 'PLAY'
             application: 'PLAY'
-            checkoutLevel: 'DEV!'
+            checkoutLevel: 'DEV1'
             gitUid: 'vbugale'
             gitToken: ${{ secrets.GITHUB_TOKEN }}
             winTopazPath: ${{ env.Win_Topaz_Location }}
