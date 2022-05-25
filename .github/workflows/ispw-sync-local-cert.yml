@@ -31,7 +31,7 @@ jobs:
           with:
             fetch-depth: 0
        -  name: Synchronize
-          uses: bmc-compuware/ispw-sync-local@feature/ZENG-226910-add-certificate-support 
+          uses: bmc-compuware/ispw-sync-local@ZENG-226910 
           id: sync-local
           with:
             host: 'cw09.compuware.com'
