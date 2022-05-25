@@ -35,9 +35,8 @@ jobs:
           id: sync-local
           with:
             host: 'cw09.compuware.com'
-            port: 47623
-            uid: 'pinvxb0'
-            pass: ${{ secrets.ISPW_USER1_PWD }}
+            port: 47623            
+            certificate: ${{ secrets.CERTIFICATE }}
             runtimeConfiguration: 'TPZP'
             stream: 'PLAY'
             application: 'PLAY'
