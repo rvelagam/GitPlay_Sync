@@ -32,7 +32,7 @@ jobs:
         with:
           host: 'cw09.compuware.com'
           port: 47623
-          uid: 'ISPWTPZ'
+          uid: 'pinvxb0'
           pass: ${{ secrets.ISPW_USER1_PWD }}
           runtimeConfiguration: 'TPZP'
           stream: 'PLAY'
