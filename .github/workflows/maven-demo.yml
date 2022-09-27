@@ -12,7 +12,7 @@ on:
 jobs:
   build:
 
-    runs-on: [self-hosted, ISPW]
+    runs-on: [self-hosted, ispw_windows]
 
     steps:
     - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
