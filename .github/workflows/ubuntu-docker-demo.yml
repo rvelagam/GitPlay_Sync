@@ -18,7 +18,7 @@ jobs:
 
   sync:
     needs: [ubuntu_version]
-    runs-on: [self-hosted, ubuntu20]
+    runs-on: [self-hosted, ispw-ubuntu]
     name: Sync
     steps:
       - name: Checkout
