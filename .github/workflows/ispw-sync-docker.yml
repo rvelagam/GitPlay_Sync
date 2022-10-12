@@ -29,7 +29,7 @@ jobs:
           with:
             fetch-depth: 0
        -  name: Synchronize
-          uses: bmc-compuware/ispw-sync@v1
+          uses: bmc-compuware/ispw-sync@v20.8.gtk.nightly
           id: sync-local
           with:
             host: 'cw09.compuware.com'
