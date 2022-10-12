@@ -18,9 +18,9 @@ jobs:
     # The type of runner that the job will run on
     runs-on: [self-hosted, ispw-ubuntu]
     
-    # env:
-    #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #   Win_Topaz_Location: 'C:\Topaz\Workbench CLI'
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      Win_Topaz_Location: 'C:\Topaz\Workbench CLI'
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -29,7 +29,7 @@ jobs:
           with:
             fetch-depth: 0
        -  name: Synchronize
-          uses: bmc-compuware/ispw-sync@v2
+          uses: bmc-compuware/ispw-sync@v1
           id: sync-local
           with:
             host: 'cw09.compuware.com'
