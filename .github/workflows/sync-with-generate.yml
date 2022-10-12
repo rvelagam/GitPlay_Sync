@@ -1,0 +1,81 @@
+on: [push]
+
+jobs:
+
+  job_hello_world:
+    runs-on: ubuntu-latest
+    name: docker direct call
+    steps:
+      - name: hello from docker
+        uses: docker://hello-world:latest
+
+  job_echo_envs:
+    needs: job_hello_world
+    runs-on: ubuntu-latest
+    name: echo environments
+    steps:
+      - name: display environments
+        run: |
+            echo "CI=$CI"
+            echo "GITHUB_WORKFLOW=$GITHUB_WORKFLOW"
+            echo "GITHUB_RUN_ID=$GITHUB_RUN_ID"
+            echo "GITHUB_RUN_NUMBER=$GITHUB_RUN_NUMBER"
+            echo "GITHUB_JOB=$GITHUB_JOB"
+            echo "GITHUB_ACTION=$GITHUB_ACTION"
+            echo "GITHUB_ACTIONS=$GITHUB_ACTIONS"
+            echo "GITHUB_ACTOR=$GITHUB_ACTOR"
+            echo "GITHUB_REPOSITORY=$GITHUB_REPOSITORY"
+            echo "GITHUB_EVENT_NAME=$GITHUB_EVENT_NAME"
+            echo "GITHUB_EVENT_PATH=$GITHUB_EVENT_PATH"
+            echo "GITHUB_WORKSPACE=$GITHUB_WORKSPACE"
+            echo "GITHUB_SHA=$GITHUB_SHA"
+            echo "GITHUB_REF=$GITHUB_REF"
+            echo "GITHUB_HEAD_REF=$GITHUB_HEAD_REF"
+            echo "GITHUB_BASE_REF=$GITHUB_BASE_REF"
+            echo "GITHUB_SERVER_URL=$GITHUB_SERVER_URL"
+            echo "GITHUB_API_URL=$GITHUB_API_URL"
+            echo "GITHUB_GRAPHQL_URL=$GITHUB_GRAPHQL_URL"
+      # To use this repository's private action,
+      # you must check out the repository123456
+
+  job_sync:
+    needs: [job_echo_envs]
+    runs-on: [self-hosted, ispw-ubuntu]
+    name: Sync
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Grab delta from change log
+        run: echo "DELTA_FILES=$( git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | sed -z 's/\n/:/g;s/:$//' ) " >> $GITHUB_ENV
+      - name: Display delta
+        run: echo "DELTA_FILES=$DELTA_FILES"
+      #- name: Log into registry
+        # This is where you will update the PAT to GITHUB_TOKEN
+      #  run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      #- name: docker pull
+      #  run: docker pull ghcr.io/compuware-ispw/ispwcli:v20.6.1.gtk
+      # sync step 2
+      - name: Sync step
+        #uses: ./actions/ispwSync # Uses an action in the root directory
+        #uses: compuware-ispw/ispw-sync@main
+        uses: bmc-compuware/ispw-sync@v1
+        id: sync
+        with:
+          host: 'cw09.compuware.com'
+          port: 47623
+          uid: ${{ secrets.TSOUSER }}
+          pass: ${{ secrets.TSOPASS }}
+          runtimeConfiguration: 'TPZP'
+          stream: 'PLAY'
+          application: 'PLAY'
+          checkoutLevel: 'DEV2'
+          gitUid: ${{ secrets.GITUSER }}
+          gitPass: ${{ secrets.GITPASS }}
+          #containerCreation: 'per-branch'
+          showEnv: true
+      - name: Get automatic build parameters
+        run: echo "automaticBuildJson=${{ steps.sync.outputs.automaticBuildJson }}"
+      - name: Get changed programs
+        run: echo "changedProgramsJson=${{ steps.sync.outputs.changedProgramsJson }}"      
