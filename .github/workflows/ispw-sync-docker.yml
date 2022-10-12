@@ -33,7 +33,7 @@ jobs:
       - name: Display delta
         run: echo "DELTA_FILES=$DELTA_FILES"
       - name: Synchronize
-        uses: bmc-compuware/ispw-sync@v20.8.gtk.nightly
+        uses: bmc-compuware/ispw-sync@v2
         id: sync-local
         with:
           host: "cw09.compuware.com"
