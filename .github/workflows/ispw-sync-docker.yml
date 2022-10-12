@@ -4,9 +4,9 @@ name: ispw sync using docker
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -17,29 +17,33 @@ jobs:
   sync:
     # The type of runner that the job will run on
     runs-on: [self-hosted, ispw-ubuntu]
-    
+
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       Win_Topaz_Location: 'C:\Topaz\Workbench CLI'
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-       -  name: Checkout
-          uses: actions/checkout@v2
-          with:
-            fetch-depth: 0
-       -  name: Synchronize
-          uses: bmc-compuware/ispw-sync@v20.8.gtk.nightly
-          id: sync-local
-          with:
-            host: 'cw09.compuware.com'
-            port: 47623
-            uid: 'pinvxb0'
-            pass: ${{ secrets.ISPW_USER1_PWD }}
-            runtimeConfiguration: 'TPZP'
-            stream: 'PLAY'
-            application: 'PLAY'
-            checkoutLevel: 'DEV1'
-            gitUid: 'vbugale'
-            gitToken: ${{ secrets.GITHUB_TOKEN }}
-            showEnv: true
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Grab delta from change log
+        run: echo "DELTA_FILES=$( git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | sed -z 's/\n/:/g;s/:$//' ) " >> $GITHUB_ENV
+      - name: Display delta
+        run: echo "DELTA_FILES=$DELTA_FILES"
+      - name: Synchronize
+        uses: bmc-compuware/ispw-sync@v20.8.gtk.nightly
+        id: sync-local
+        with:
+          host: "cw09.compuware.com"
+          port: 47623
+          uid: "pinvxb0"
+          pass: ${{ secrets.ISPW_USER1_PWD }}
+          runtimeConfiguration: "TPZP"
+          stream: "PLAY"
+          application: "PLAY"
+          checkoutLevel: "DEV1"
+          gitUid: "vbugale"
+          gitToken: ${{ secrets.GITHUB_TOKEN }}
+          showEnv: true
