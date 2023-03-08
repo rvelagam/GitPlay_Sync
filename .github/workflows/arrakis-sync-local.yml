@@ -37,8 +37,8 @@ jobs:
             uid: 'pinvxb0'
             pass: ${{ secrets.ISPW_USER1_PWD }}
             runtimeConfiguration: 'TPTP'
-            stream: 'SAMZ'
-            application: 'SAMZ'
+            stream: 'PLAY'
+            application: 'PLAY'
             checkoutLevel: 'DEV1'
             gitUid: 'vbugale'
             gitToken: ${{ secrets.GITHUB_TOKEN }}
