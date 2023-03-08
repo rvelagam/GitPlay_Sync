@@ -20,7 +20,7 @@ jobs:
     
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      Win_Topaz_Location: 'C:\Topaz\Workbench CLI'
+      Win_Topaz_Location: 'C:\Topaz\WorkbenchCLI-GA-20.13.02'
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
