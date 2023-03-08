@@ -6,7 +6,7 @@ name: ispw sync local
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [ arrakis-operations ]
   pull_request:
     branches: [ main ]
 
@@ -34,7 +34,7 @@ jobs:
           uses: bmc-compuware/ispw-sync-local@main
           id: sync-local
           with:
-            host: 'cw09.compuware.com'
+            host: 'cw09.bmc.com'
             port: 47623
             uid: 'pinvxb0'
             pass: ${{ secrets.ISPW_USER1_PWD }}
