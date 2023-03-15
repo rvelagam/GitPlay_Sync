@@ -6,7 +6,7 @@
 
 000600
 000700********************************************************
-000800* THIS PROGRAM IS A TRAINING PROGRAM Test Jalaj Updated
+000800* THIS PROGRAM IS A TRAINING PROGRAM Sync Jalaj Updated
 000900*      WITH A LINK TO TSUBR05
 001000*
 001100*      AND COPYLIBS   TCPYA05   (HEADER)
