@@ -29,7 +29,7 @@ jobs:
           with:
             fetch-depth: 0
        -  name: Synchronize
-          uses: bmc-compuware/ispw-sync-local@main
+          uses: bmc-compuware/ispw-sync-local@ZENG-267554
           id: sync-local
           with:
             host: 'cw09.bmc.com'
