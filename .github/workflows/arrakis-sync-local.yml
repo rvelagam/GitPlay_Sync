@@ -37,7 +37,7 @@ jobs:
             uid: 'pinvxb0'
             pass: ${{ secrets.ISPW_USER1_PWD }}
             runtimeConfiguration: 'TPTP'
-            stream: 'PLAy'
+            stream: 'PLAY'
             application: 'PLAY'
             checkoutLevel: 'PLAY'
             gitUid: 'vbugale'
