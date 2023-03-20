@@ -37,9 +37,9 @@ jobs:
             uid: 'pinvxb0'
             pass: ${{ secrets.ISPW_USER1_PWD }}
             runtimeConfiguration: 'TPTP'
-            stream: 'PLAY'
-            application: 'PLAY'
-            subAppl: 'PLAY'
+            stream: 'Topaz'
+            application: 'KATE'
+            subAppl: 'KATESUB2'
             checkoutLevel: 'DEV1'
             gitUid: 'vbugale'
             gitToken: ${{ secrets.GITHUB_TOKEN }}
