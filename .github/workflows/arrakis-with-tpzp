@@ -1,0 +1,46 @@
+# This is a basic workflow to help you get started with Actions
+
+name: arrakis sync local
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ arrakis-operations ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  sync:
+    # The type of runner that the job will run on
+    runs-on: [self-hosted, ISPW]
+    
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      Win_Topaz_Location: 'C:\Topaz\WorkbenchCLI-GA-20.13.02'
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+       -  name: Checkout
+          uses: actions/checkout@v2
+          with:
+            fetch-depth: 0
+       -  name: Synchronize
+          uses: bmc-compuware/ispw-sync-local@ZENG-267554
+          id: arrakis-sync-local
+          with:
+            host: 'cw09.bmc.com'
+            port: 47623
+            uid: 'pinvxb0'
+            pass: ${{ secrets.ISPW_USER1_PWD }}
+            runtimeConfiguration: 'TPTP'
+            stream: 'PLAY'
+            application: 'PLAY'
+            checkoutLevel: 'DEV1'
+            gitUid: 'vbugale'
+            gitToken: ${{ secrets.GITHUB_TOKEN }}
+            winTopazPath: ${{ env.Win_Topaz_Location }}
+            showEnv: true
