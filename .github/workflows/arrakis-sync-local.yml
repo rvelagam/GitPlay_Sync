@@ -37,9 +37,9 @@ jobs:
             uid: 'pinvxb0'
             pass: ${{ secrets.ISPW_USER1_PWD }}
             runtimeConfiguration: 'TPTP'
-            stream: 'SAMZ'
-            application: 'SAMZ'
-            checkoutLevel: 'DEV1'
+            stream: 'PLAy'
+            application: 'PLAY'
+            checkoutLevel: 'PLAY'
             gitUid: 'vbugale'
             gitToken: ${{ secrets.GITHUB_TOKEN }}
             winTopazPath: ${{ env.Win_Topaz_Location }}
