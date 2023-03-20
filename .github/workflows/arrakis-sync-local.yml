@@ -39,7 +39,7 @@ jobs:
             runtimeConfiguration: 'TPTP'
             stream: 'PLAY'
             application: 'PLAY'
-            subAppl: 'PLAY2'
+            subAppl: 'PLAY'
             checkoutLevel: 'DEV1'
             gitUid: 'vbugale'
             gitToken: ${{ secrets.GITHUB_TOKEN }}
