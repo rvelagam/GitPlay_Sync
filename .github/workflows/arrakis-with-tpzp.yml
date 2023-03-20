@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: arrakis sync local
+name: arrakis sync with tpzp
 
 # Controls when the workflow will run
 on:
