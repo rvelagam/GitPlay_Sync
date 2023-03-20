@@ -36,7 +36,7 @@ jobs:
             port: 47623
             uid: 'pinvxb0'
             pass: ${{ secrets.ISPW_USER1_PWD }}
-            runtimeConfiguration: 'TPTP'
+            runtimeConfiguration: 'TPZP'
             stream: 'PLAY'
             application: 'PLAY'
             checkoutLevel: 'DEV1'
