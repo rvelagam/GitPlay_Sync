@@ -25,3 +25,5 @@ ispwApplication:
   readWriteTimeout: 90
   runtimeConfig: tpzp
   stream: PLAY
+  sandbox: Y
+  sandboxJoinAtLevel: STG1
