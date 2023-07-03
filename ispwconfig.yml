@@ -2,7 +2,7 @@
 ispwApplication:
   application: PLAY
   encryptionProtocol: None
-  host: cw09.compuware.com
+  host: cw09.bmc.com
   hostCodePage: '1047'
   pathMappings: 
   - path: \CLST
@@ -13,10 +13,12 @@ ispwApplication:
     types:
     - fileExtension: cob
       ispwType: COB
+      progType: 'Yes'
   - path: \COPY
     types:
     - fileExtension: copy
-      ispwType: COPY  
+      ispwType: COPY
+      progType: 'Yes'
   - path: \JOB
     types:
     - fileExtension: job
