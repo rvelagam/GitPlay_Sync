@@ -5,7 +5,7 @@
 000500 DATE-COMPILED.
 000600
 000700********************************************************
-000800* THIS PROGRAM IS A TRAINING PROGRAM
+000800* THIS PROGRAM IS A TRAINING PROGRAM TEST CLI CERT
 000900*      CALLED FROM    TPROG31
 001000*      WITH COPYLIB   TCPYB31 (LINKAGEAREA)
 001100* ======================================================
